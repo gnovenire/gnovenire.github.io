@@ -30,6 +30,7 @@ export const products: Product[] = [
   {
     id: "wireless-earbuds-pro",
     name: "Wireless Earbuds Pro",
+    affiliateUrl: 'https://your-store.myshopify.com/products/premium-laptop-stand',
     description: "Premium noise-canceling wireless earbuds with crystal-clear audio and 30-hour battery life.",
     longDescription:
       "Experience unparalleled audio quality with our Wireless Earbuds Pro. Featuring advanced noise-canceling technology, these earbuds deliver rich, immersive sound while blocking out distractions. With a sleek, ergonomic design and 30-hour total battery life, they're perfect for all-day use.",
