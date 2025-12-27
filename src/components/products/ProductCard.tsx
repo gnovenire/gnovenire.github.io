@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { ShoppingBag, ExternalLink, Star } from 'lucide-react';
+import { ExternalLink, Star } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Product } from '@/data/products';
 import { useCart } from '@/context/CartContext';
@@ -15,29 +15,27 @@ export function ProductCard({ product }: ProductCardProps) {
     ? Math.round((1 - product.price / product.originalPrice) * 100) 
     : 0;
 
-  const handleAddToCart = (e: React.MouseEvent) => {
-    e.preventDefault();
-    e.stopPropagation();
-    addToCart(product);
-    toast({
-      title: "Added to cart",
-      description: `${product.name} has been added to your cart.`,
-    });
-  };
-
-  const handleAffiliateClick = (e: React.MouseEvent) => {
+  const handleExternalClick = (e: React.MouseEvent) => {
     e.preventDefault();
     e.stopPropagation();
     
-    // Track affiliate click
+    // Track click
     if (typeof window !== 'undefined') {
-      window.dispatchEvent(new CustomEvent('affiliate-click', {
-        detail: { productId: product.id, productName: product.name }
+      window.dispatchEvent(new CustomEvent('product-click', {
+        detail: { productId: product.id, productName: product.name, type: product.type }
       }));
     }
     
-    // Open affiliate link
-    window.open(product.affiliateUrl, '_blank', 'noopener,noreferrer');
+    // Open external link (dropship store or affiliate)
+    if (product.affiliateUrl) {
+      window.open(product.affiliateUrl, '_blank', 'noopener,noreferrer');
+    } else {
+      toast({
+        title: "Link not configured",
+        description: "Please add the product URL in products.ts",
+        variant: "destructive",
+      });
+    }
   };
 
   return (
@@ -83,25 +81,14 @@ export function ProductCard({ product }: ProductCardProps) {
 
           {/* Quick Action */}
           <div className="absolute bottom-3 left-3 right-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-            {product.type === 'dropship' ? (
-              <Button 
-                variant="hero" 
-                className="w-full gap-2"
-                onClick={handleAddToCart}
-              >
-                <ShoppingBag className="h-4 w-4" />
-                Add to Cart
-              </Button>
-            ) : (
-              <Button 
-                variant="affiliate" 
-                className="w-full gap-2"
-                onClick={handleAffiliateClick}
-              >
-                <ExternalLink className="h-4 w-4" />
-                View on Partner
-              </Button>
-            )}
+            <Button 
+              variant={product.type === 'dropship' ? 'hero' : 'affiliate'}
+              className="w-full gap-2"
+              onClick={handleExternalClick}
+            >
+              <ExternalLink className="h-4 w-4" />
+              {product.type === 'dropship' ? 'Buy Now' : 'View on Partner'}
+            </Button>
           </div>
         </div>
 
