@@ -40,7 +40,7 @@ export const products: Product[] = [
       "https://i.pinimg.com/736x/80/37/56/803756c9b4a561b1777b53ddbe023ffc.jpg",
     ],
     category: "electronics",
-    type: "dropship",
+    type: "affiliate",
     rating: 4.8,
     reviewCount: 2341,
     inStock: true,
