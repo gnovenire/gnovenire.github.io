@@ -50,6 +50,7 @@ export const products: Product[] = [
   {
     id: "smart-fitness-watch",
     name: "Smart Fitness Watch",
+    affiliateUrl: 'https://your-store.myshopify.com/products/premium-laptop-stand',
     description: "Track your health and fitness with precision. Heart rate, sleep, and 50+ workout modes.",
     longDescription:
       "Take control of your fitness journey with our Smart Fitness Watch. This advanced wearable tracks your heart rate 24/7, monitors your sleep patterns, and offers 50+ workout modes to match your active lifestyle.",
