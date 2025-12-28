@@ -13,18 +13,18 @@ const contactInfo = [
     icon: Mail,
     title: 'Email',
     value: 'support@gnovenire.com',
-    href: 'mailto:support@gnovenire.com',
+    href: 'mailto:gnovenire.global@tuta.io',
   },
   {
     icon: Phone,
     title: 'Phone',
     value: '+1 (555) 123-4567',
-    href: 'tel:+15551234567',
+    href: 'tel:+8801880656883',
   },
   {
     icon: MapPin,
     title: 'Address',
-    value: '123 Commerce St, New York, NY 10001',
+    value: 'INTENATIONAL',
     href: null,
   },
 ];
